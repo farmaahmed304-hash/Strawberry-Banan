@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Strawberry Banan | ستروبيري بنان</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Aref+Ruqaa:wght@400;700&family=Tajawal:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream:#FFF8F1;
+    --cream-dim:#F7EDE2;
+    --blush:#F3C9C6;
+    --berry:#8C2F3B;
+    --berry-deep:#6E2029;
+    --ink:#3B2A26;
+    --leaf:#5C7A5E;
+    --gold:#C9975B;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--cream);
+    color:var(--ink);
+    font-family:'Tajawal', sans-serif;
+    overflow-x:hidden;
+  }
+  h1,h2,h3, .display{
+    font-family:'Aref Ruqaa', serif;
+    font-weight:700;
+    line-height:1.25;
+  }
+  a{text-decoration:none; color:inherit;}
+  img{max-width:100%; display:block;}
+  .wrap{max-width:1100px; margin:0 auto; padding:0 24px;}
+
+  .edit-note{
+    background:var(--ink); color:var(--cream);
+    font-size:12px; text-align:center; padding:8px 14px;
+    letter-spacing:.02em;
+  }
+  .edit-note b{color:var(--gold);}
+
+  header{
+    position:sticky; top:0; z-index:50;
+    background:rgba(255,248,241,.9); backdrop-filter:blur(6px);
+    border-bottom:1px solid rgba(59,42,38,.08);
+  }
+  .nav{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:16px 24px; max-width:1100px; margin:0 auto;
+  }
+  .logo{
+    display:flex; align-items:center; gap:8px;
+    font-family:'Aref Ruqaa', serif; font-size:24px; color:var(--berry);
+  }
+  .logo span.small{font-family:'Tajawal',sans-serif; font-size:11px; color:var(--ink); display:block; letter-spacing:.15em; font-weight:500; opacity:.65;}
+  nav ul{display:flex; gap:28px; list-style:none;}
+  nav ul li a{font-size:14px; font-weight:700; position:relative; padding-bottom:4px;}
+  nav ul li a:after{content:'';position:absolute; right:0; bottom:0; width:0; height:2px; background:var(--berry); transition:width .25s;}
+  nav ul li a:hover:after{width:100%;}
+  .nav-cta{
+    background:var(--berry); color:var(--cream); padding:10px 20px; border-radius:100px;
+    font-size:13px; font-weight:700; white-space:nowrap;
+  }
+  @media(max-width:720px){ nav ul{display:none;} }
+
+  .hero{
+    position:relative;
+    padding:70px 24px 90px;
+    text-align:center;
+    background:
+      radial-gradient(circle at 15% 20%, rgba(243,201,198,.55), transparent 40%),
+      radial-gradient(circle at 85% 75%, rgba(140,47,59,.10), transparent 45%),
+      var(--cream);
+    overflow:hidden;
+  }
+  .stitch-row{
+    display:flex; justify-content:center; margin-bottom:22px;
+  }
+  .eyebrow{
+    display:inline-block; font-size:13px; letter-spacing:.25em; font-weight:700;
+    color:var(--berry); border:1px solid var(--berry); padding:6px 18px; border-radius:100px;
+    margin-bottom:22px;
+  }
+  .hero h1{
+    font-size:clamp(38px,7vw,68px); color:var(--berry-deep); margin-bottom:18px;
+  }
+  .hero h1 em{font-style:normal; color:var(--leaf);}
+  .hero p.sub{
+    max-width:520px; margin:0 auto 34px; font-size:17px; line-height:1.9; color:var(--ink); opacity:.85;
+  }
+  .hero-ctas{display:flex; gap:14px; justify-content:center; flex-wrap:wrap;}
+  .btn{
+    display:inline-flex; align-items:center; gap:8px;
+    padding:15px 30px; border-radius:100px; font-weight:700; font-size:15px;
+    transition:transform .2s ease;
+  }
+  .btn:hover{transform:translateY(-2px);}
+  .btn-primary{background:var(--berry); color:var(--cream);}
+  .btn-outline{border:1.5px solid var(--ink); color:var(--ink);}
+
+  .berry-icon{width:26px; height:26px;}
+
+  .stitch-divider{width:100%; height:34px; display:block;}
+
+  section{padding:80px 24px;}
+  .section-head{text-align:center; max-width:600px; margin:0 auto 50px;}
+  .section-head .eyebrow{margin-bottom:16px;}
+  .section-head h2{font-size:clamp(28px,4vw,42px); color:var(--berry-deep);}
+  .section-head p{margin-top:14px; opacity:.75; line-height:1.8; font-size:15.5px;}
+
+  .about{background:var(--cream-dim);}
+  .about-grid{
+    display:grid; grid-template-columns:1fr 1fr; gap:56px; align-items:center; max-width:1000px; margin:0 auto;
+  }
+  .about-visual{
+    aspect-ratio:1/1; border-radius:28px; background:var(--blush);
+    display:flex; align-items:center; justify-content:center; position:relative; overflow:hidden;
+  }
+  .about-visual .monogram{font-family:'Aref Ruqaa',serif; font-size:120px; color:var(--berry); opacity:.9;}
+  .about-text h3{font-size:26px; color:var(--berry-deep); margin-bottom:16px;}
+  .about-text p{line-height:1.95; font-size:15.5px; opacity:.85; margin-bottom:14px;}
+  @media(max-width:760px){ .about-grid{grid-template-columns:1fr;} }
+
+  .cat-grid{
+    display:grid; grid-template-columns:repeat(auto-fit,minmax(230px,1fr)); gap:24px; max-width:1050px; margin:0 auto;
+  }
+  .cat-card{
+    background:var(--cream); border:1px solid rgba(59,42,38,.1); border-radius:22px;
+    overflow:hidden; text-align:center; transition:box-shadow .25s, transform .25s;
+  }
+  .cat-card:hover{box-shadow:0 18px 40px -14px rgba(140,47,59,.25); transform:translateY(-4px);}
+  .cat-icon{width:56px; height:56px; margin:0 auto 18px;}
+
+  .product-img{
+    width:100%; aspect-ratio:1/1; object-fit:cover; background:var(--blush);
+    display:flex; align-items:center; justify-content:center; color:var(--berry); font-size:13px; opacity:.7;
+  }
+  .product-body{padding:22px 20px 26px;}
+  .product-body h3{font-family:'Tajawal',sans-serif; font-weight:900; font-size:17px; margin-bottom:6px; color:var(--ink);}
+  .product-body .desc{font-size:13px; opacity:.65; line-height:1.6; margin-bottom:14px; min-height:38px;}
+  .price-row{display:flex; align-items:center; justify-content:space-between; gap:10px;}
+  .price-tag{font-family:'Aref Ruqaa',serif; font-size:20px; color:var(--berry-deep);}
+  .price-tag span{font-family:'Tajawal',sans-serif; font-size:12px; opacity:.6; font-weight:500;}
+  .order-btn{
+    background:var(--berry); color:var(--cream); font-size:12.5px; font-weight:700;
+    padding:9px 16px; border-radius:100px; white-space:nowrap;
+  }
+
+  .steps{background:var(--berry-deep); color:var(--cream);}
+  .steps .section-head h2{color:var(--cream);}
+  .steps .section-head p{color:var(--blush); opacity:.9;}
+  .steps-grid{
+    display:grid; grid-template-columns:repeat(4,1fr); gap:20px; max-width:1050px; margin:0 auto; counter-reset:step;
+  }
+  .step{
+    position:relative; padding:30px 20px; border:1px solid rgba(255,248,241,.18); border-radius:20px;
+  }
+  .step .num{
+    font-family:'Aref Ruqaa',serif; font-size:38px; color:var(--gold); margin-bottom:14px; display:block;
+  }
+  .step h4{font-size:15.5px; font-weight:700; margin-bottom:8px;}
+  .step p{font-size:13px; opacity:.75; line-height:1.7;}
+  @media(max-width:850px){ .steps-grid{grid-template-columns:1fr 1fr;} }
+  @media(max-width:520px){ .steps-grid{grid-template-columns:1fr;} }
+
+  .insta{
+    text-align:center; background:var(--cream-dim);
+  }
+  .insta-box{
+    max-width:600px; margin:0 auto; background:var(--cream); border:1px solid rgba(59,42,38,.1);
+    border-radius:26px; padding:50px 30px;
+  }
+  .insta-box h2{font-size:28px; color:var(--berry-deep); margin-bottom:12px;}
+  .insta-box p{opacity:.75; margin-bottom:26px; line-height:1.8;}
+
+  footer{background:var(--ink); color:var(--cream); padding:56px 24px 28px;}
+  .footer-grid{
+    display:flex; justify-content:space-between; flex-wrap:wrap; gap:32px; max-width:1100px; margin:0 auto 40px;
+  }
+  footer .logo{color:var(--blush);}
+  footer .f-col h5{font-size:13px; letter-spacing:.15em; color:var(--gold); margin-bottom:14px;}
+  footer .f-col a, footer .f-col p{display:block; font-size:14px; opacity:.8; margin-bottom:10px;}
+  .footer-bottom{
+    max-width:1100px; margin:0 auto; padding-top:24px; border-top:1px solid rgba(255,248,241,.12);
+    font-size:12.5px; opacity:.6; text-align:center;
+  }
+</style>
+</head>
+<body>
+
+<div class="edit-note">
+  ✏️ الصفحة دي <b>مسودة جاهزة للتعديل</b> — غيّري رقم الواتساب ولينك الانستجرام في الكود قبل النشر (دورّي على كلمة <b>EDIT-ME</b>)
+</div>
+
+<header>
+  <div class="nav">
+    <div class="logo">🍓 Strawberry Banan
+      <span class="small">CROCHET STUDIO · EGYPT</span>
+    </div>
+    <nav>
+      <ul>
+        <li><a href="#about">قصتنا</a></li>
+        <li><a href="#products">المنتجات</a></li>
+        <li><a href="#steps">اطلبي دلوقتي</a></li>
+        <li><a href="#contact">تواصل</a></li>
+      </ul>
+    </nav>
+    <a class="nav-cta" href="https://wa.me/20EDIT-ME" target="_blank">واتساب</a>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <span class="eyebrow">HANDMADE IN EGYPT 🇪🇬</span>
+    <h1>كل غرزة<br><em>بتحكي حكاية</em> 🍓</h1>
+    <p class="sub">كروشيه هاند ميد بالكامل بإيدين مصرية… شنط، إكسسوارات، وقطع مصممة عشانك انتي بالذات. كل قطعة بتاخد وقتها عشان توصلك زي ما لازم.</p>
+    <div class="hero-ctas">
+      <a class="btn btn-primary" href="https://wa.me/20EDIT-ME" target="_blank">
+        اطلبي على واتساب →
+      </a>
+      <a class="btn btn-outline" href="https://instagram.com/EDIT-ME" target="_blank">
+        تابعينا على انستجرام
+      </a>
+    </div>
+  </div>
+</section>
+
+<svg class="stitch-divider" viewBox="0 0 1200 34" preserveAspectRatio="none">
+  <path d="M0 17 Q 15 0 30 17 T 60 17 T 90 17 T 120 17 T 150 17 T 180 17 T 210 17 T 240 17 T 270 17 T 300 17 T 330 17 T 360 17 T 390 17 T 420 17 T 450 17 T 480 17 T 510 17 T 540 17 T 570 17 T 600 17 T 630 17 T 660 17 T 690 17 T 720 17 T 750 17 T 780 17 T 810 17 T 840 17 T 870 17 T 900 17 T 930 17 T 960 17 T 990 17 T 1020 17 T 1050 17 T 1080 17 T 1110 17 T 1140 17 T 1170 17 T 1200 17"
+    fill="none" stroke="#8C2F3B" stroke-width="3" stroke-linecap="round"/>
+</svg>
+
+<section class="about" id="about">
+  <div class="about-grid">
+    <div class="about-visual">
+      <span class="monogram">SB</span>
+    </div>
+    <div class="about-text">
+      <span class="eyebrow">قصتنا</span>
+      <h3>بداية بسيطة… بشغف كبير</h3>
+      <p>Strawberry Banan بدأت من حب حقيقي للكروشيه، وكل قطعة بنشتغلها بإيدينا من الأول للآخر — من اختيار الخيط لحد آخر غرزة.</p>
+      <p>مش بس شنطة أو إكسسوار… دي قطعة ليها روح، اتعملت خصيصي عشانك.</p>
+    </div>
+  </div>
+</section>
+
+<svg class="stitch-divider" viewBox="0 0 1200 34" preserveAspectRatio="none">
+  <path d="M0 17 Q 15 34 30 17 T 60 17 T 90 17 T 120 17 T 150 17 T 180 17 T 210 17 T 240 17 T 270 17 T 300 17 T 330 17 T 360 17 T 390 17 T 420 17 T 450 17 T 480 17 T 510 17 T 540 17 T 570 17 T 600 17 T 630 17 T 660 17 T 690 17 T 720 17 T 750 17 T 780 17 T 810 17 T 840 17 T 870 17 T 900 17 T 930 17 T 960 17 T 990 17 T 1020 17 T 1050 17 T 1080 17 T 1110 17 T 1140 17 T 1170 17 T 1200 17"
+    fill="none" stroke="#C9975B" stroke-width="3" stroke-linecap="round"/>
+</svg>
+
+<section id="products">
+  <div class="section-head">
+    <span class="eyebrow">ايه اللي هتلاقيه</span>
+    <h2>مجموعاتنا</h2>
+    <p>كل كارت تحت ده منتج — غيّري الصورة والاسم والسعر بتاعه من الكود بمجرد ما تجهزي شغلك</p>
+  </div>
+
+  <div class="cat-grid">
+
+    <div class="cat-card">
+      <img class="product-img" src="https://via.placeholder.com/400x400/F3C9C6/8C2F3B?text=صورة+المنتج" alt="اسم المنتج">
+      <div class="product-body">
+        <h3>شنطة الفراولة الصغيرة</h3>
+        <div class="desc">كروشيه هاند ميد، خيط قطن، لون وردي فاتح</div>
+        <div class="price-row">
+          <div class="price-tag">350 <span>جنيه</span></div>
+          <a class="order-btn" href="https://wa.me/20EDIT-ME?text=عايزة اطلب شنطة الفراولة الصغيرة" target="_blank">اطلبي</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="cat-card">
+      <img class="product-img" src="https://via.placeholder.com/400x400/F3C9C6/8C2F3B?text=صورة+المنتج" alt="اسم المنتج">
+      <div class="product-body">
+        <h3>تعليقة شنطة كروشيه</h3>
+        <div class="desc">ألوان متعددة، تركيبها سهل على أي شنطة</div>
+        <div class="price-row">
+          <div class="price-tag">80 <span>جنيه</span></div>
+          <a class="order-btn" href="https://wa.me/20EDIT-ME?text=عايزة اطلب تعليقة الشنطة" target="_blank">اطلبي</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="cat-card">
+      <img class="product-img" src="https://via.placeholder.com/400x400/F3C9C6/8C2F3B?text=صورة+المنتج" alt="اسم المنتج">
+      <div class="product-body">
+        <h3>بيريه كروشيه</h3>
+        <div class="desc">دافي وستايل، متوفر بأكتر من لون</div>
+        <div class="price-row">
+          <div class="price-tag">220 <span>جنيه</span></div>
+          <a class="order-btn" href="https://wa.me/20EDIT-ME?text=عايزة اطلب البيريه" target="_blank">اطلبي</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="cat-card">
+      <img class="product-img" src="https://via.placeholder.com/400x400/F3C9C6/8C2F3B?text=صورة+المنتج" alt="تفصيل حسب الطلب">
+      <div class="product-body">
+        <h3>تفصيل حسب الطلب</h3>
+        <div class="desc">اختاري اللون والمقاس اللي يناسبك</div>
+        <div class="price-row">
+          <div class="price-tag">حسب الطلب</div>
+          <a class="order-btn" href="https://wa.me/20EDIT-ME?text=عايزة أعمل طلب تفصيل" target="_blank">استفسري</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section class="steps" id="steps">
+  <div class="section-head">
+    <span class="eyebrow" style="border-color:#F3C9C6;color:#F3C9C6;">بسيطة وسريعة</span>
+    <h2>ازاي تطلبي؟</h2>
+    <p>مفيش موقع دفع أونلاين لسا — كل الطلبات بتتم مباشرة معانا عشان نضمنلك أفضل تجربة</p>
+  </div>
+  <div class="steps-grid">
+    <div class="step"><span class="num">01</span><h4>شوفي المجموعة</h4><p>تصفحي القطع المتاحة على صفحتنا في انستجرام</p></div>
+    <div class="step"><span class="num">02</span><h4>ابعتيلنا واتساب</h4><p>قوليلنا القطعة، اللون، والمقاس اللي عايزاه</p></div>
+    <div class="step"><span class="num">03</span><h4>بنجهزها بإيدينا</h4><p>كل قطعة بتتعمل خصيصي ليكي من الصفر</p></div>
+    <div class="step"><span class="num">04</span><h4>التوصيل لباب البيت</h4><p>توصيل لكل محافظات مصر</p></div>
+  </div>
+</section>
+
+<section class="insta">
+  <div class="insta-box">
+    <h2>تابعينا أول بأول 🍓</h2>
+    <p>كل الجديد بينزل هناك الأول — ستوريز، تفاصيل الأسعار، والأوردرات الجاهزة للشحن</p>
+    <a class="btn btn-primary" href="https://instagram.com/EDIT-ME" target="_blank">Instagram: @stra_banan</a>
+  </div>
+</section>
+
+<footer id="contact">
+  <div class="footer-grid">
+    <div class="f-col">
+      <div class="logo">🍓 Strawberry Banan</div>
+      <p style="margin-top:14px; max-width:260px;">كروشيه هاند ميد بالحب، من مصر ليكي.</p>
+    </div>
+    <div class="f-col">
+      <h5>تواصل معانا</h5>
+      <a href="https://wa.me/20EDIT-ME" target="_blank">واتساب: +20 EDIT-ME</a>
+      <a href="https://instagram.com/EDIT-ME" target="_blank">انستجرام: @stra_banan</a>
+    </div>
+    <div class="f-col">
+      <h5>روابط</h5>
+      <a href="#about">قصتنا</a>
+      <a href="#products">المنتجات</a>
+      <a href="#steps">ازاي تطلبي</a>
+    </div>
+  </div>
+  <div class="footer-bottom">© 2026 Strawberry Banan — صُنع بحب في مصر 🇪🇬</div>
+</footer>
+
+</body>
+  </html>
